@@ -1,0 +1,237 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+
+:root {
+  --primary-color: #3a86ff;
+
+  --breakpoint-sm: 576px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1024;
+  --breakpoint-xl: 1280px;
+  --breakpoint-2xl: 1520px;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Roboto", sans-serif;
+  letter-spacing: 0.1em;
+  background: black;
+  color: white;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0;
+  padding: 0;
+}
+
+section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-inline: auto;
+  /* max-width: 1520px; */
+}
+
+.container {
+  width: 100%;
+  max-width: 100%;
+}
+
+@media (min-width: 768px) {
+  .container {
+    max-width: var(--breakpoint-md);
+  }
+}
+
+@media (min-width: 1024px) {
+  .container {
+    max-width: var(--breakpoint-lg);
+  }
+}
+
+@media (min-width: 1280px) {
+  .container {
+    max-width: var(--breakpoint-xl);
+  }
+}
+
+@media (min-width: 1520px) {
+  .container {
+    max-width: var(--breakpoint-2xl);
+  }
+}
+
+.hero {
+  width: 100%;
+  aspect-ratio: 1/2;
+  > * {
+    margin-inline: auto;
+  }
+
+  h1 {
+    font-size: 2.5rem;
+    font-weight: 900;
+    line-height: calc(50 / 40);
+  }
+
+  p {
+    font-size: 1.375rem;
+    font-weight: 400;
+    line-height: calc(30 / 22);
+  }
+
+  button {
+    padding: 9px 32px;
+    font-size: 1rem;
+    font-weight: 500;
+    line-height: calc(30 / 16);
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 100px;
+    cursor: pointer;
+    transition: 0.15s ease-in;
+
+    &:hover {
+      filter: brightness(1.1);
+    }
+  }
+
+  position: relative;
+
+  .hero-backdrop {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+          to right,
+          rgba(0, 0, 0, 1) 0%,
+          rgba(0, 0, 0, 0.8) 50%,
+          rgba(0, 0, 0, 0) 100%
+        ),
+        linear-gradient(
+          to bottom,
+          rgba(0, 0, 0, 0.8) 0%,
+          rgba(0, 0, 0, 0) 25%,
+          rgba(0, 0, 0, 0) 75%,
+          rgba(0, 0, 0, 0.8) 100%
+        );
+    }
+  }
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+@media (min-width: 768px) {
+  .hero {
+    aspect-ratio: 16 / 9;
+  }
+}
+
+.movies-list {
+  max-width: 100%;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+@media (min-width: 768px) {
+  .movies-list {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 24px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .movies-list {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 40px;
+  }
+}
+
+.movie-card {
+  aspect-ratio: 7 / 9;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  border-radius: 20px;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .movie-info {
+    position: absolute;
+    inset: 0;
+    padding: 30px;
+    background: linear-gradient(
+      0deg,
+      rgba(0, 0, 0, 0.9) 0%,
+      rgba(0, 0, 0, 0) 100%
+    );
+    transition: 0.3s ease-in;
+    opacity: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-start;
+    gap: 16px;
+
+    .movie-title {
+      font-size: 1.125rem;
+      font-weight: 900;
+      line-height: calc(21 / 18);
+    }
+
+    .movie-description {
+      font-size: 1rem;
+      font-weight: 400;
+      line-height: calc(18.75 / 16);
+      letter-spacing: 10%;
+
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 3;
+    }
+
+    .movie-popularity {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+  }
+
+  &:hover .movie-info {
+    opacity: 1;
+  }
+}
