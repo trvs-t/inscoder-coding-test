@@ -13,10 +13,13 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: "Roboto", sans-serif;
-  letter-spacing: 0.1em;
   background: black;
   color: white;
+}
+
+* {
+  font-family: "Roboto", sans-serif;
+  letter-spacing: 0.1em;
 }
 
 ul {
@@ -151,6 +154,48 @@ section {
 @media (min-width: 768px) {
   .hero {
     aspect-ratio: 16 / 9;
+  }
+}
+
+.movies-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  h2 {
+    font-size: 2.5rem;
+    font-weight: 900;
+    line-height: calc(50 / 40);
+  }
+
+  .movies-sort-button {
+    height: 2.75rem;
+    border: solid 1.5px white;
+    font-size: 1rem;
+    font-weight: 500;
+    color: white;
+    padding: 0 1.5rem;
+    border-radius: 1.375rem;
+    background: transparent;
+    cursor: pointer;
+
+    transition: 0.15s ease-in;
+
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.1);
+    }
+    &.active {
+      background: white;
+      color: black;
+
+      &:hover {
+        background: rgba(255, 255, 255, 0.9);
+      }
+    }
   }
 }
 
