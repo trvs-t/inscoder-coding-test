@@ -1,5 +1,6 @@
 <html>
   <head>
+    <script src="./index.js" type="module"></script>
     <script
       defer
       src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"
@@ -32,9 +33,10 @@
       </div>
     </section>
     <section class="container" x-data="movies">
-      <ul class="movies-list">
-        <template x-for="movie in movies">
-          <li class="movie-card">
+      <button @click="toggleSort()">Sort by popularity</button>
+      <ul class="movies-list" style="margin-top: 40px">
+        <template x-for="movie in sortedMovies">
+          <li class="movie-card" :key="movie.id" x-transition>
             <img :src="getTMDBImageUrl(movie.poster_path)" alt="" />
             <div class="movie-info">
               <h2 class="movie-title" x-text="movie.title"></h2>
@@ -60,5 +62,4 @@
       </ul>
     </section>
   </body>
-  <script src="./index.js"></script>
 </html>
