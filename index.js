@@ -1,5 +1,5 @@
 import { sortMovies } from "./lib/sort-movies.js";
-import { getTMDBImageUrl } from "./lib/tmdb-api/api.js";
+import { fetchPopularMovies, getTMDBImageUrl } from "./lib/tmdb-api/api.js";
 import { formatNumber } from "./lib/formatting.js";
 
 // make available to the global scope
@@ -17,10 +17,7 @@ document.addEventListener("alpine:init", () => {
       this.sort = this.sort === "popularity" ? "default" : "popularity";
     },
     async init() {
-      // fetch(popularMoviesUrl, options)
-      const response = await fetch("./lib/tmdb-api/sample_response.json").then(
-        (res) => res.json()
-      );
+      const response = await fetchPopularMovies();
       this.movies = response.results;
     },
   }));
