@@ -11,11 +11,8 @@
   <body>
     <section class="hero">
       <div class="hero-backdrop" x-data="movies">
-        <template x-if="movies[0]?.backdrop_path">
-          <img
-            :src="getTMDBImageUrl(movies[0]?.backdrop_path, 'original')"
-            alt=""
-          />
+        <template x-if="banner">
+          <img :src="banner" alt="" />
         </template>
       </div>
 
