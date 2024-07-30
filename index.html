@@ -1,5 +1,6 @@
-<html>
+<html x-data :style="{ overflow: $store.mobileMenu.open ? 'hidden' : 'auto' }">
   <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="./index.js" type="module"></script>
     <script
       defer
@@ -17,7 +18,135 @@
           />
         </template>
       </div>
-      <div class="container">
+
+      <header class="container">
+        <h1>
+          MOVIE
+          <span
+            style="
+              font-size: 1.5rem;
+              color: var(--primary-color);
+              font-weight: 400;
+            "
+            >TIME</span
+          >
+        </h1>
+
+        <nav class="mobile" x-data :class="{open:$store.mobileMenu.open}">
+          <ul>
+            <li style="margin-bottom: 7px">
+              <button class="icon-button" @click="$store.mobileMenu.toggle()">
+                <svg
+                  width="19"
+                  height="19"
+                  viewBox="0 0 19 19"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M1 1L17.9706 17.9706"
+                    stroke="white"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                  />
+                  <path
+                    d="M1 17.9706L17.9706 1.00002"
+                    stroke="white"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                  />
+                </svg>
+              </button>
+            </li>
+            <li>
+              <a href="#" class="active">Home</a>
+            </li>
+            <li>
+              <a href="#">Features</a>
+            </li>
+            <li>
+              <a href="#">Download</a>
+            </li>
+            <li>
+              <a href="#">Live TV</a>
+            </li>
+          </ul>
+        </nav>
+
+        <nav>
+          <ul class="desktop">
+            <li>
+              <a href="#" class="active">Home</a>
+            </li>
+            <li>
+              <a href="#">Features</a>
+            </li>
+            <li>
+              <a href="#">Download</a>
+            </li>
+            <li>
+              <a href="#">Live TV</a>
+            </li>
+          </ul>
+          <button
+            class="icon-button mobile"
+            x-data
+            @click="$store.mobileMenu.toggle()"
+          >
+            <svg
+              width="26"
+              height="18"
+              viewBox="0 0 26 18"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M1 1H25"
+                stroke="white"
+                stroke-width="2"
+                stroke-linecap="round"
+              />
+              <path
+                d="M1 9H25"
+                stroke="white"
+                stroke-width="2"
+                stroke-linecap="round"
+              />
+              <path
+                d="M1 17H25"
+                stroke="white"
+                stroke-width="2"
+                stroke-linecap="round"
+              />
+            </svg>
+          </button>
+          <button class="icon-button">
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M10.5 19C15.1944 19 19 15.1944 19 10.5C19 5.8056 15.1944 2 10.5 2C5.8056 2 2 5.8056 2 10.5C2 15.1944 5.8056 19 10.5 19Z"
+                stroke="white"
+                stroke-width="2"
+                stroke-linejoin="round"
+              />
+              <path
+                d="M16.6108 16.6108L20.8534 20.8535"
+                stroke="white"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </button>
+        </nav>
+      </header>
+
+      <div class="container hero-content">
         <h1 style="width: 100%">
           <span style="color: var(--primary-color)">Unleash the Magic,</span>
           <br />
@@ -29,7 +158,7 @@
           from classics to latest blockbusters.
         </p>
 
-        <button style="margin-top: 50px">Watch Now</button>
+        <button class="hero-button" style="margin-top: 50px">Watch Now</button>
       </div>
     </section>
     <section class="container" x-data="movies" style="margin-top: 60px">

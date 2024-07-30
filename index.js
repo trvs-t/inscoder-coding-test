@@ -24,4 +24,11 @@ document.addEventListener("alpine:init", () => {
       this.movies = response.results;
     },
   }));
+  Alpine.store("mobileMenu", {
+    open: false,
+    toggle() {
+      console.log(this.open);
+      this.open = !this.open;
+    },
+  });
 });
